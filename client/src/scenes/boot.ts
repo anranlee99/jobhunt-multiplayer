@@ -1,6 +1,6 @@
 import { Room, Client } from "colyseus.js";
 import { BACKEND_URL } from "../backend";
-
+import {setUpDiscordSdk } from "../utils/useAuth"
 
 export class Boot extends Phaser.Scene {
     room: Room;
@@ -32,6 +32,8 @@ export class Boot extends Phaser.Scene {
         const client = new Client(BACKEND_URL);
         msg.innerHTML = "created client";
         try {
+
+            const auth_obj = await setUpDiscordSdk();
             this.room = await client.joinOrCreate("part1_room", {
                 deez: "nuts"
 
