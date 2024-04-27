@@ -6,7 +6,7 @@ const isEmbedded = queryParams.get('frame_id') != null;
 let discordSdk: DiscordSDK | DiscordSDKMock;
 
 if (isEmbedded) {
-  discordSdk = new DiscordSDK(process.env.VITE_CLIENT_ID);
+  discordSdk = new DiscordSDK(process.env.VITE_DISCORD_CLIENT_ID);
 } else {
   // We're using session storage for user_id, guild_id, and channel_id
   // This way the user/guild/channel will be maintained until the tab is closed, even if you refresh
@@ -18,7 +18,7 @@ if (isEmbedded) {
   const mockGuildId = getOverrideOrRandomSessionValue('guild_id');
   const mockChannelId = getOverrideOrRandomSessionValue('channel_id');
 
-  discordSdk = new DiscordSDKMock(process.env.VITE_CLIENT_ID, mockGuildId, mockChannelId);
+  discordSdk = new DiscordSDKMock(process.env.VITE_DISCORD_CLIENT_ID, mockGuildId, mockChannelId);
   const discriminator = String(mockUserId.charCodeAt(0) % 5);
 
   discordSdk._updateCommandMocks({

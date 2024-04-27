@@ -19,26 +19,20 @@ export class Boot extends Phaser.Scene {
     async create() {
         this.scene.start('preloader');
 
-        const msg = document.getElementById("msg")
-        msg.innerHTML = "no status";
-        msg.innerHTML = "backend url is " + BACKEND_URL;
-
-
         const connectionStatusText = this.add
             .text(0, 0, "Trying to connect with the server...")
             .setStyle({ color: "#ff0000" })
             .setPadding(4)
 
         const client = new Client(BACKEND_URL);
-        msg.innerHTML = "created client";
         try {
 
             const auth_obj = await setUpDiscordSdk();
+            //pass in the auth obj once we define it 
             this.room = await client.joinOrCreate("part1_room", {
                 deez: "nuts"
 
             });
-            msg.innerHTML = "joined room";
             console.log("joined room");
             // connection successful!
             connectionStatusText.destroy();
@@ -47,10 +41,23 @@ export class Boot extends Phaser.Scene {
         } catch (e) {
             // couldn't connect
             connectionStatusText.text = "Could not connect with the server.";
-            msg.innerHTML = "failed to join room";
             console.log("failed to join room");
         }
 
-        msg.innerHTML += "\n got past try catch"
+
+        this.room.state.players.onAdd((player, sessionId) => {
+            //replace with actual entity creation
+            this.add.text(0, 0, `player id ${player} joined`);
+            this.add.text(0, 20, "session id: " + sessionId);
+        });
+
+        // remove local reference when entity is removed from the server
+        this.room.state.players.onRemove((player, sessionId) => {
+            // const entity = this.playerEntities[sessionId];
+            // if (entity) {
+            //     entity.destroy();
+            //     delete this.playerEntities[sessionId]
+            // }
+        });
     }
 }

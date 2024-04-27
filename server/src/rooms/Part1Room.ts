@@ -34,6 +34,7 @@ export class Part1Room extends Room<Part1State> {
 
   onJoin (client: Client, options: any) {
     console.log(client.sessionId, "joined!");
+    console.log(options);
 
     // create player at random position.
     const player = new Player();
