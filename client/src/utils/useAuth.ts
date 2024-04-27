@@ -36,7 +36,7 @@ export const setUpDiscordSdk = async () => {
             // "webhook.incoming",
         ],
     });
-
+    console.log("trying to fetch token");
     // Retrieve an access_token from your embedded app's server
     const response = await fetch('/api/token', {
         method: 'POST',
@@ -48,13 +48,14 @@ export const setUpDiscordSdk = async () => {
         }),
     });
     const { access_token } = await response.json();
+    console.log("fetched token");
 
     // Authenticate with Discord client (using the access_token)
     const newAuth = await discordSdk.commands.authenticate({
         access_token,
     });
-    // msg.innerHTML = "vite id: " + process.env.VITE_DISCORD_CLIENT_ID;
     const str = JSON.stringify(discordSdk);
+    console.log(str);
 
     // Get guild specific nickname and avatar, and fallback to user name and avatar
     const guildMember: IGuildsMembersRead | null = await fetch(
