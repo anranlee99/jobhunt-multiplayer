@@ -7,8 +7,8 @@ import { BACKEND_HTTP_URL } from "./backend";
 
 const config = {
     type: Phaser.AUTO,
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: 1920, //window.innerWidth,
+    height: 1080, //window.innerHeight,
     parent: 'game-container',
     backgroundColor: '#a8d1f0',
     scale: {
@@ -18,7 +18,7 @@ const config = {
     scene: [
         Boot,
         Preloader,
-        MainMenu
+        MainMenu,
     ]
 };
 

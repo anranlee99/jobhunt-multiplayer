@@ -26,7 +26,7 @@ export class Preloader extends Phaser.Scene {
         this.scale.displaySize.setAspectRatio(width/height);
         this.scale.refresh();
 
-        let loading = this.add.image(width * 0.32, height * 0.8, 'loading')
+        let loading = this.add.image(width * 0.315, height * 0.87, 'loading')
         loading.setScale(0.25)
         this.tweens.add({
             targets: loading,

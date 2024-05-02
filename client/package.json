@@ -23,6 +23,7 @@
     "@discord/embedded-app-sdk": "^1.2.0",
     "colyseus.js": "^0.15.9",
     "dotenv": "^16.4.5",
+    "openai": "^4.40.0",
     "phaser": "^3.55.2"
   }
 }
