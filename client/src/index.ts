@@ -1,7 +1,8 @@
 import Phaser from 'phaser';
 import { Boot } from './scenes/boot'
 import { MainMenu } from './scenes/mainmenu' 
-import { Preloader } from './scenes/preloader';
+import { Preloader } from './scenes/preloader'
+import { Interview } from './scenes/interview'
 
 import { BACKEND_HTTP_URL } from "./backend";
 
@@ -19,6 +20,7 @@ const config = {
         Boot,
         Preloader,
         MainMenu,
+        Interview
     ]
 };
 

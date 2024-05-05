@@ -11,6 +11,7 @@ export class Preloader extends Phaser.Scene {
         this.load.image("map", "jobhunt_map.png");
         this.load.image("battle1", "battle1.png");
         this.load.image("settings", "TEMPsettings.png");
+        this.load.image('star', "TEMPstar.png")
     }
 
     create ()

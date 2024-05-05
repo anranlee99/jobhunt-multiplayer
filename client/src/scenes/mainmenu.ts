@@ -29,7 +29,8 @@ export class MainMenu extends Phaser.Scene {
        star1.on('pointerover', () => star1.setScale(0.2))
        star1.on('pointerout', () => star1.setScale(0.15))
        star1.on('pointerdown', () => {
-           this.scene.transition({
+            console.log('star pressed')
+            this.scene.transition({
                target: 'interview',
                duration: 1000,
                moveBelow: true,
@@ -119,6 +120,7 @@ export class MainMenu extends Phaser.Scene {
        // bots tab -- TODO: add text & set interactive
        let botsX = mapStart
        graphics.fillRoundedRect(botsX, spectateY,  width * 0.1, spectateHeight, cornerRadius)
+
         // fade in
         if (data.transitionEffect) {
             this.tweens.add({
